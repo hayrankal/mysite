@@ -8,67 +8,68 @@
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
-    body {
-      background-color: #0a0a0a;
-      color: #fff;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-      cursor: none;
-    }
+body {
+  background-color: #0a0a0a;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  cursor: none;
+}
 
-    .snow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
+.snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
 
-    .snowflake {
-      position: absolute;
-      background-color: #fff;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(1px);
-    }
+.snowflake {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(1px);
+}
 
-    .custom-cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 10px;
-      height: 10px;
-      background: white;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      box-shadow: 0 0 10px white, 0 0 20px white;
-    }
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 10px white, 0 0 20px white;
+}
+
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
-  display: block; /* flex kaldırıldı */
+  display: block;
 }
 
-/* Profil ve yazı bölümü flex */
 .profile-section {
   display: flex;
   align-items: center;
   gap: 2rem;
-  justify-content: center; /* ortala */
-  margin-bottom: 3rem; /* sosyal kutulara boşluk */
+  justify-content: center;
+  margin-bottom: 3rem;
 }
+
 .profile-pic {
   width: 160px;
   height: 160px;
@@ -82,20 +83,101 @@
   display: block;
 }
 
-/* sosyal medya kutuları grid olarak devam */
+/* Sosyal medya kutuları grid */
 .social-links {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  margin-top: 3rem;
 }
 
-/* responsive */
+/* Link görünümünü düzelt */
+a.social-card,
+a.social-card:visited,
+a.social-card:hover,
+a.social-card:active {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.social-card {
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.8rem 1.5rem;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.social-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.social-card:hover .social-icon {
+  transform: scale(1.1);
+}
+
+.social-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.social-info {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  word-break: break-word;
+  color: #dfe6e9;
+}
+
+/* Sosyal medya özel renkleri */
+.instagram .social-icon {
+  color: #e1306c;
+}
+.instagram:hover {
+  background: rgba(225, 48, 108, 0.1);
+}
+
+.whatsapp .social-icon {
+  color: #25d366;
+}
+.whatsapp:hover {
+  background: rgba(37, 211, 102, 0.1);
+}
+
+.discord .social-icon {
+  color: #7289da;
+}
+.discord:hover {
+  background: rgba(114, 137, 218, 0.1);
+}
+
+.roblox .social-icon {
+  color: #ff4500;
+}
+.roblox:hover {
+  background: rgba(255, 69, 0, 0.1);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .social-links {
     grid-template-columns: 1fr;
   }
 }
 
+/* Yazı ve animasyon */
 h1#username {
   font-size: 2.8rem;
   font-weight: 600;
@@ -105,9 +187,8 @@ h1#username {
   border-right: 2px solid #fff;
   width: 0;
   animation: typing 3s steps(6, end) 1s forwards, blink 0.75s step-end infinite;
-  margin: 0; /* boşlukları kaldır */
+  margin: 0;
 }
-
 
 @keyframes typing {
   from {
@@ -124,98 +205,17 @@ h1#username {
   }
 }
 
+.bio {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #bdc3c7;
+}
 
-    .bio {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-      opacity: 0.85;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      color: #bdc3c7;
-    }
-
-    .social-links {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .social-card {
-      background: rgba(30, 30, 30, 0.8);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 1.8rem 1.5rem;
-      transition: all 0.4s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      text-align: center;
-    }
-
-    .social-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .social-icon {
-      font-size: 2.8rem;
-      margin-bottom: 1.2rem;
-      transition: transform 0.3s ease;
-    }
-
-    .social-card:hover .social-icon {
-      transform: scale(1.1);
-    }
-
-    .social-title {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-      font-weight: 500;
-    }
-
-    .social-info {
-      font-size: 0.95rem;
-      opacity: 0.9;
-      word-break: break-word;
-      color: #dfe6e9;
-    }
-
-    .instagram .social-icon {
-      color: #e1306c;
-    }
-    .instagram:hover {
-      background: rgba(225, 48, 108, 0.1);
-    }
-
-    .whatsapp .social-icon {
-      color: #25d366;
-    }
-    .whatsapp:hover {
-      background: rgba(37, 211, 102, 0.1);
-    }
-
-    .discord .social-icon {
-      color: #7289da;
-    }
-    .discord:hover {
-      background: rgba(114, 137, 218, 0.1);
-    }
-
-    .roblox .social-icon {
-      color: #ff4500;
-    }
-    .roblox:hover {
-      background: rgba(255, 69, 0, 0.1);
-    }
-
-    @media (max-width: 768px) {
-      .social-links {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
@@ -226,37 +226,41 @@ h1#username {
   <div class="profile-section">
     <img src="https://i.hizliresim.com/r99i4al.gif" alt="Profil Resmi" class="profile-pic floating" />
     <div>
-      <h1 id="username">TRISTY</h1>
-      <p class="bio">Karanlığın içinden gelen bir profil. Aşağıdan sosyal medya hesaplarına ulaşabilirsiniz.</p>
+      <h1 id="username">Tristy?</h1>
+      <p class="bio">Karanlığın içinden gelen bir profil. Aşağıdan iletişim adreslerine ulaşabilirsiniz.</p>
     </div>
   </div>
 
-  <div class="social-links">
-      <div class="social-card instagram">
-        <div class="social-icon"><i class="fab fa-instagram"></i></div>
-        <h3 class="social-title">Instagram</h3>
-        <p class="social-info">@cihan.y3lcxn</p>
-      </div>
-      <div class="social-card roblox">
-<div class="social-icon">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Roblox_player_icon_black.svg/1024px-Roblox_player_icon_black.svg.png" alt="Roblox Icon" style="width:40px; filter: brightness(0) invert(1);" />
+<div class="social-links">
+
+  <a href="https://www.instagram.com/cihan.y3lcxn" target="_blank" class="social-card instagram">
+    <div class="social-icon"><i class="fab fa-instagram"></i></div>
+    <h3 class="social-title">Instagram</h3>
+    <p class="social-info">@cihan.y3lcxn</p>
+  </a>
+
+  <a href="https://www.roblox.com/users/2739361657/profile" target="_blank" class="social-card roblox">
+    <div class="social-icon">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Roblox_player_icon_black.svg/1024px-Roblox_player_icon_black.svg.png" alt="Roblox Icon" style="width:40px; filter: brightness(0) invert(1);" />
+    </div>
+    <h3 class="social-title">Roblox</h3>
+    <p class="social-info">@TheTristyXD</p>
+  </a>
+
+  <a href="https://wa.me/6283851919682" target="_blank" class="social-card whatsapp">
+    <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
+    <h3 class="social-title">WhatsApp</h3>
+    <p class="social-info">+62 838-5191-9682</p>
+  </a>
+
+  <a href="https://discord.com/users/280814183321305089" target="_blank" class="social-card discord">
+    <div class="social-icon"><i class="fab fa-discord"></i></div>
+    <h3 class="social-title">Discord</h3>
+    <p class="social-info">@2pw1</p>
+  </a>
+
 </div>
 
-        <h3 class="social-title">Roblox</h3>
-        <p class="social-info">@TheTristyXD</p>
-      </div>
-      <div class="social-card whatsapp">
-        <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
-        <h3 class="social-title">WhatsApp</h3>
-        <p class="social-info">+62 838-5191-9682</p>
-      </div>
-      <div class="social-card discord">
-        <div class="social-icon"><i class="fab fa-discord"></i></div>
-        <h3 class="social-title">Discord</h3>
-        <p class="social-info">@2pw1</p>
-      </div>
-    </div>
-  </div>
 
   <script>
     // Kar tanesi oluştur
